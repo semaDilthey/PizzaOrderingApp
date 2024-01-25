@@ -13,7 +13,7 @@ The main task of this testapp is to match the design and scrolling of the menu v
 - The category bar should stick to the top bar when scrolling.
 - When a category is clicked, the list should scroll to the corresponding section.
 - Use any open API that fits the current needs.
-Optional:
+### Optional:
 - Offline mode: i.e., if there is no network access, display the last loaded data.
 
 ## Technologies Used
@@ -29,6 +29,7 @@ Optional:
   ### 1. Main screen : 
   Compositional Layout was used. There are 2 sections: 1st for promotion banners and 2nd for menu with a header
 
-![Демонстрация](https://github.com/semaDilthey/HotelTest/assets/128741166/7a30de79-0124-4287-8215-ba891051b5b9)
+![PizzaApp_Demo](https://github.com/semaDilthey/PizzaOrderingApp/assets/128741166/e4da5be7-cf1a-4dcc-9546-95671b40d43e)
+
  
 
