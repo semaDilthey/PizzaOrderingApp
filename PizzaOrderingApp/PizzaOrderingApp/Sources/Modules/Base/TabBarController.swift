@@ -7,6 +7,13 @@
 
 import UIKit
 
+enum Controllers : Int, CaseIterable {
+    case menu
+    case contacts
+    case profile
+    case bag
+}
+
 final class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
@@ -17,9 +24,15 @@ final class TabBarController: UITabBarController {
     }
 
     private func configureTabBar() {
+        
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.backgroundColor = .white
+        
+        tabBar.standardAppearance = tabBarAppearance
+        tabBar.scrollEdgeAppearance = tabBarAppearance
+        
         tabBar.tintColor = Resources.Colors.active
         tabBar.barTintColor = Resources.Colors.inActive
-        tabBar.backgroundColor = .white
         
         tabBar.layer.borderColor = Resources.Colors.separator.cgColor
         tabBar.layer.borderWidth = 1
@@ -48,7 +61,7 @@ final class TabBarController: UITabBarController {
     private func getController(for tab: Controllers) -> BaseController {
         switch tab {
         case .menu:
-            return MenuController()
+            return MenuRouter.createModule()
         case .contacts:
             return ContactsController()
         case .profile:

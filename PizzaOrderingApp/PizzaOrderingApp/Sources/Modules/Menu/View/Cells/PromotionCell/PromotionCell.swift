@@ -28,6 +28,10 @@ final class PromotionCell: UICollectionViewCell {
         imageView.backgroundColor = .gray
         return imageView
     }()
+    
+    public func set(image: UIImage) {
+        imageView.image = image
+    }
 }
 
 extension PromotionCell {

@@ -18,21 +18,21 @@ final class HeaderView : UICollectionReusableView {
         layoutCollection()
     }
     
+    var callBack : ((String)->())?
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let tabs = ["Пицца", "Комбо", "Десерты", "Напитки", "Закуски"]
-    private var collectionView : UICollectionView!
-
+    var tabs = ["Пицца", "Комбо", "Десерты", "Напитки", "Закуски"]
+    var collectionView : UICollectionView!
+    
     private func configureCollection() {
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 8
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
-        // должно по идее прилеплять его к потолку
-        layout.sectionHeadersPinToVisibleBounds = true
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = Resources.Colors.background
@@ -57,6 +57,10 @@ final class HeaderView : UICollectionReusableView {
 
 extension HeaderView : UICollectionViewDelegate, UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
@@ -65,6 +69,12 @@ extension HeaderView : UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderCell.identifier, for: indexPath) as! HeaderCell
         cell.configureCell(with: tabs[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            callBack?(tabs[indexPath.row])
+        }
     }
     
     

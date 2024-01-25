@@ -10,7 +10,6 @@ import UIKit
 enum Resources {
     
     enum Colors {
-        
         static var active = UIColor(hexString: "#FD3A69")
         static var inActive = UIColor(hexString: "#C3C4C9")
         
@@ -25,14 +24,13 @@ enum Resources {
         enum Cells {
             static var selected = UIColor(hexString: "#FD3A69")
             static var unSelected = UIColor(hexString: "#FD3A69").withAlphaComponent(0.4)
-
         }
     }
     
+    
+    
     enum Images {
-        
         enum TabBar {
-            
             static func image(for tab: Controllers) -> UIImage? {
                 switch tab {
                 case .menu:
@@ -45,19 +43,34 @@ enum Resources {
                     UIImage(named: "bag_tab")?.withRenderingMode(.alwaysTemplate)
                 }
             }
-            
+        }
+        
+        enum Banners : CaseIterable {
+           case banner1
+           case banner2
+           case banner3
+
+           var image: UIImage? {
+               switch self {
+               case .banner1:
+                   return UIImage(named: "banner_1")
+               case .banner2:
+                   return UIImage(named: "banner_2")
+               case .banner3:
+                   return UIImage(named: "banner_3")
+               }
+           }
         }
  
         enum Menu {
             static var location = UIImage(named: "arrowDown_navBar")?.withRenderingMode(.alwaysTemplate)
-
         }
     }
     
+    
+    
     enum Strings {
-        
         enum TabBar {
-            
             static func title(for tab: Controllers) -> String? {
                 switch tab {
                 case .menu:
@@ -70,12 +83,6 @@ enum Resources {
                     "Корзина"
                 }
             }
-            static var menu = "Меню"
-            static var contacts = "Контакты"
-            static var profile = "Профиль"
-            static var bag = "Корзина"
         }
-        
     }
-    
 }
